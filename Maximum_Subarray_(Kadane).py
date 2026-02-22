@@ -1,8 +1,20 @@
 # Maximum Sum Subarray (Kadane's Algorithm)
 
-def max_subarray(arr):
-    curr = max_sum = arr[0]
-    for num in arr[1:]:
-        curr = max(num, curr+num)
-        max_sum = max(max_sum, curr)
-    return max_sum
+class Solution:
+    def maxSubArray(self, nums):
+        # Initialize with the first element
+        max_sum = nums[0]
+        current_sum = nums[0]
+        
+        # Traverse the array starting from the second element
+        for i in range(1, len(nums)):
+            # Either extend the current subarray or start a new one
+            current_sum = max(nums[i], current_sum + nums[i])
+            
+            # Update the global maximum
+            max_sum = max(max_sum, current_sum)
+        
+        return max_sum
+
+# TC: O(n)
+# SC: O(1)
