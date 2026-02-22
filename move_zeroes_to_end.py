@@ -1,5 +1,16 @@
 # Move Zeroes to End: Move all zeroes in an array to the end while maintaining the order of non-zero elements.
 
-def move_zereos(self,arr):
-    non_zero = [x for x in arr if x!=0]
-    return non_zero + [0]*(len(arr) - len(non_zero))
+class Solution(object):
+    def moveZeroes(self, nums):
+        last_non_zero =0
+        for i in range(len(nums)):
+            if nums[i] != 0:
+                nums[last_non_zero] = nums[i]
+                last_non_zero +=1
+        for i in range(last_non_zero, len(nums)):
+           nums[i] = 0         
+
+
+
+        
+        
